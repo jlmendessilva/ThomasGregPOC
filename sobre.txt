@@ -8,7 +8,6 @@ Ele foi construído seguindo a arquitetura de **repositórios** e **contratos**,
 ele permite o **cadastro de clientes**, consumindo dados da API. A arquitetura utilizada aqui é simples, baseada 
 em **técnicas de repositórios** e **contratos**.
 
-Claro! Vou melhorar o entendimento do texto para você:
 
 Para que as duas aplicações funcionem simultaneamente, siga os passos abaixo:
 
