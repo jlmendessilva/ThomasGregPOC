@@ -1,0 +1,19 @@
+
+Na solução, foram criados dois projetos:
+
+1. **ClienteAPI**: Este projeto tem como objetivo fornecer uma **interface de programação** para a manipulação de dados. Ele foi construído seguindo a arquitetura de **repositórios** e **contratos**, utilizando **Entity Framework** e **SQL Server**.
+2. **ConsummoWeb**: O objetivo deste projeto é **consumir dados** da aplicação ClienteAPI. Por meio de um pequeno sistema web, ele permite o **cadastro de clientes**, consumindo dados da API. A arquitetura utilizada aqui é simples, baseada em **técnicas de repositórios** e **contratos**.
+
+As duas aplicação precisam rodar simutaneamente o primeiro a ser startado e ClienteAPI
+
+1 - Abra o arquivo ThomasGregPOC.sln no visual studio
+2 - Abra o projeto ClienteAPI 
+3 - Localize e abra o appsettings.json, o modifique a ConnectionStrings: "Server=localhost\\SQLEXPRESS;Database=db_tg01;Trusted_Connection=True;Encrypt=False" com as informacoes
+    de sua maquina. 
+4 - Compile novamente a solucao, agora vamos criar o banco pelo migrations 
+5 - Ainda com o projeto ClienteAPI selecionado, selecione Ferramentas >> Gerenciador de Pacotes Nuget >> Console do gerenciador de Pacote
+6 - Verifique se como projeto padrao esteja como CLienteAPI
+7 - Em Seguida com gerenciado de solucao aberto clique com botao direito o sobre o ClienteAPI >> Depurar >> Iniciar uma nova instancia
+8 - Ao subir um navegador com o swagger indicara que a aplicacao ClienteAPI esta funcionando
+9 - Volta ao visual studio e clique com o botao direito sobre o ConsumoWeb >> Depurar >>  Iniciar uma nova instancia
+10 - Abrira a aplicacao web que e um cadastro de cliente que consome API de ClienteAPI 
