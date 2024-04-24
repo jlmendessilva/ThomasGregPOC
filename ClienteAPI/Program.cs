@@ -24,6 +24,7 @@ namespace ClienteAPI
                 op => op.UseSqlServer(builder.Configuration.GetConnectionString("TGCon")));
 
             builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+            builder.Services.AddScoped<ILogradouroRepository, LogradouroRepository>();
 
             var app = builder.Build();
 

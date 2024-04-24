@@ -1,0 +1,88 @@
+﻿@model WebConsumoAPI.Models.ClienteModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Cadastro de Cliente</h4>
+<hr />
+<div class="row">
+    <!--<div class="col-md-4"> -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+             -->
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Upload" class="control-label"></label>
+                <input asp-for="Upload" class="form-control" />
+                <span asp-validation-for="Upload" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <!-- No arquivo Create.cshtml -->
+            <div id="logradourosContainer">
+                <!-- Campos de logradouro adicionados dinamicamente aparecerão aqui -->
+            </div>
+            <button type="button" onclick="adicionarLogradouro()" class="btn btn-success">+ Adicionar um Logradorouro</button>
+        </div>
+
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            </div>
+        </form>
+    <!--</div> -->
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        let proximoIndice = 0;
+
+        function adicionarLogradouro() {
+            const logradouroHtml = `
+                <div class="form-group">
+                    <label>Endereço:</label>
+                    <input type="text" name="Logradouros[${proximoIndice}].Endereco" class="form-control" />
+                    <!-- Outros campos de logradouro aqui -->
+                            <button type="button" onclick="removerLogradouro(this)" class="btn btn-danger">[X]</button>
+                </div>
+            `;
+            document.getElementById("logradourosContainer").insertAdjacentHTML("beforeend", logradouroHtml);
+
+            proximoIndice++; // Incrementa o índice para o próximo logradouro
+        }
+
+        function removerLogradouro(botao) {
+            const divLogradouro = botao.parentElement;
+            divLogradouro.remove();
+        }
+
+    </script>
+}

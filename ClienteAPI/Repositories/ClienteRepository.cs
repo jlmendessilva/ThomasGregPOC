@@ -14,7 +14,7 @@ namespace ClienteAPI.Repositories
         }
         public async Task<ClienteModel> Add(ClienteModel cliente)
         {
-            _dbContext.AddAsync(cliente);
+            await _dbContext.Cliente.AddAsync(cliente);
             await _dbContext.SaveChangesAsync();
 
             return cliente;
@@ -42,25 +42,6 @@ namespace ClienteAPI.Repositories
         {
             return await _dbContext.Cliente.Include(c => c.Logradouros).FirstOrDefaultAsync(x => x.Id == id);
         }
-
-        /*public async Task<ClienteModel> Update(ClienteModel cliente, Guid id)
-        {
-            ClienteModel cliente_id = await searchId(id);
-
-            if(cliente_id == null)
-                throw new Exception($"Usuario: {id} não encontrado.");
-
-            cliente_id.Nome = cliente.Nome;
-            cliente_id.Email = cliente.Email;
-            cliente_id.Logotipo = cliente.Logotipo;
-            cliente_id.Logradouros = cliente.Logradouros;
-
-            await _dbContext.SaveChangesAsync();
-
-            return cliente_id;
-           
-        }*/
-
         public async Task<ClienteModel> Update(ClienteModel cliente, Guid id)
         {
             ClienteModel cliente_id = await searchId(id);
@@ -81,7 +62,6 @@ namespace ClienteAPI.Repositories
             foreach (var enderecoParaRemover in logradourosParaRemover)
             {
                 cliente_id.Logradouros.Remove(enderecoParaRemover);
-                //_dbContext.Logradouros.Remove(enderecoParaRemover); // Remove do banco de dados
             }
 
             // Adiciona ou atualiza os logradouros
@@ -98,7 +78,6 @@ namespace ClienteAPI.Repositories
                 {
                     // Adiciona um novo endereço
                     cliente_id.Logradouros.Add(enderecoAtualizado);
-                    //_dbContext.Logradouros.Add(enderecoAtualizado); // Adiciona ao banco de dados
                 }
             }
 
