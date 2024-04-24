@@ -21,7 +21,7 @@ O trecho a ser alterado é o seguinte:
 4. Compile novamente a solução. Agora vamos criar o banco de dados por meio das migrações.
 5. Ainda com o projeto **ClienteAPI** selecionado, acesse **Ferramentas > Gerenciador de Pacotes NuGet > Console do Gerenciador de 
 Pacotes**.
-6. Verifique se o projeto padrão está definido como **ClienteAPI**.
+6. Verifique se o projeto padrão está definido como **ClienteAPI** e digite no console: Update-Database e aguarde ser gerado o banco de dados.
 7. Em seguida, com a solução aberta, clique com o botão direito sobre o projeto **ClienteAPI** e selecione **Depurar > Iniciar uma nova 
 instância**.
 8. Um navegador será aberto com o Swagger, indicando que a aplicação **ClienteAPI** está funcionando.
