@@ -34,7 +34,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Enderecos cadastrados:</th>
-                        <th></th>
+                        <th>@Html.ActionLink("Novo endereço", "#", new { id = Model.Id })</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,7 +42,7 @@
                     {
                         <tr>
                             <td>@item.Endereco</td>
-                            <td> @Html.ActionLink("Excluir", "delEndereco", new { id = item.Id })</td>
+                            <td> @Html.ActionLink("Excluir", "#", new { id = item.Id })</td>
                         </tr>
                     }
                 </tbody>
