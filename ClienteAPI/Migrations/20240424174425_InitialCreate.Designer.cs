@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClienteAPI.Migrations
 {
     [DbContext(typeof(DataDbcontext))]
-    [Migration("20240422124700_InitialDB")]
-    partial class InitialDB
+    [Migration("20240424174425_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace ClienteAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ClienteAPI.Models.Cliente", b =>
+            modelBuilder.Entity("ClienteAPI.Models.ClienteModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,13 +49,13 @@ namespace ClienteAPI.Migrations
                     b.ToTable("Cliente");
                 });
 
-            modelBuilder.Entity("ClienteAPI.Models.Logradouro", b =>
+            modelBuilder.Entity("ClienteAPI.Models.LogradouroModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClienteId")
+                    b.Property<Guid?>("ClienteModelId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Endereco")
@@ -65,19 +65,19 @@ namespace ClienteAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("ClienteModelId");
 
                     b.ToTable("Logradouro");
                 });
 
-            modelBuilder.Entity("ClienteAPI.Models.Logradouro", b =>
+            modelBuilder.Entity("ClienteAPI.Models.LogradouroModel", b =>
                 {
-                    b.HasOne("ClienteAPI.Models.Cliente", null)
+                    b.HasOne("ClienteAPI.Models.ClienteModel", null)
                         .WithMany("Logradouros")
-                        .HasForeignKey("ClienteId");
+                        .HasForeignKey("ClienteModelId");
                 });
 
-            modelBuilder.Entity("ClienteAPI.Models.Cliente", b =>
+            modelBuilder.Entity("ClienteAPI.Models.ClienteModel", b =>
                 {
                     b.Navigation("Logradouros");
                 });

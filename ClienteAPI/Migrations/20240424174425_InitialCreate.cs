@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ClienteAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDB : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,22 +31,22 @@ namespace ClienteAPI.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Endereco = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    ClienteModelId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Logradouro", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Logradouro_Cliente_ClienteId",
-                        column: x => x.ClienteId,
+                        name: "FK_Logradouro_Cliente_ClienteModelId",
+                        column: x => x.ClienteModelId,
                         principalTable: "Cliente",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Logradouro_ClienteId",
+                name: "IX_Logradouro_ClienteModelId",
                 table: "Logradouro",
-                column: "ClienteId");
+                column: "ClienteModelId");
         }
 
         /// <inheritdoc />
